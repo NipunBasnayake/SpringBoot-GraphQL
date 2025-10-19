@@ -36,4 +36,24 @@ public class ProductServiceImpl implements ProductService {
                 modelMapper.map(productDto, Product.class)
         ), ProductDto.class);
     }
+
+    @Override
+    public ProductDto update(Integer id, ProductDto productDto) {
+        Product existing = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        if (productDto.getName() != null) existing.setName(productDto.getName());
+        if (productDto.getCategory() != null) existing.setCategory(productDto.getCategory());
+        if (productDto.getPrice() != null) existing.setPrice(productDto.getPrice());
+        if (productDto.getStock() != null) existing.setStock(productDto.getStock());
+
+        Product updated = productRepository.save(existing);
+        return modelMapper.map(updated, ProductDto.class);
+    }
+
+    @Override
+    public Boolean delete(Integer id) {
+        productRepository.deleteById(id);
+        return !productRepository.existsById(id);
+    }
 }

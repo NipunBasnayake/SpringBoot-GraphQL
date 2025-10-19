@@ -10,4 +10,8 @@ public interface ProductService {
     List<ProductDto>  getByCategory(String category);
 
     ProductDto persist(ProductDto productDto);
+
+    ProductDto update(Integer id, ProductDto productDto);
+
+    Boolean delete(Integer id);
 }
