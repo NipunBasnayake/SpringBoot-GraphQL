@@ -8,10 +8,10 @@ spring:
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
-      hibernate:
-        ddl-auto: update
+  jpa:
+    hibernate:
+      ddl-auto: update
 
-    output:
-      ansi:
-        enabled: always
+  output:
+    ansi:
+      enabled: always
