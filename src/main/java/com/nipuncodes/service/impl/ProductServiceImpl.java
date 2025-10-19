@@ -1,6 +1,7 @@
 package com.nipuncodes.service.impl;
 
 import com.nipuncodes.dto.ProductDto;
+import com.nipuncodes.entity.Product;
 import com.nipuncodes.repository.ProductRepository;
 import com.nipuncodes.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,12 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByCategory(category).stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .toList();
+    }
+
+    @Override
+    public ProductDto persist(ProductDto productDto) {
+        return modelMapper.map(productRepository.save(
+                modelMapper.map(productDto, Product.class)
+        ), ProductDto.class);
     }
 }

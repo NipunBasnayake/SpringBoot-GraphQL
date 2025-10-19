@@ -8,4 +8,6 @@ public interface ProductService {
     List<ProductDto> getAll();
 
     List<ProductDto>  getByCategory(String category);
+
+    ProductDto persist(ProductDto productDto);
 }
