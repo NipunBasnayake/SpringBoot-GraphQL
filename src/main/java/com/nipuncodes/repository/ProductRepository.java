@@ -1,4 +1,7 @@
 package com.nipuncodes.repository;
 
-public interface ProductRepository {
+import com.nipuncodes.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 }
